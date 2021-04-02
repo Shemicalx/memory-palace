@@ -1,0 +1,32 @@
+#navbar {
+    background-color: #555;
+    width: 15%;
+    min-width: 200px;
+}
+
+#navbar ul {
+    list-style: none;
+}
+
+#navbar li {
+    height: 3rem;
+    width: auto;
+}
+
+#navbar a {
+    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+    width: auto;
+    height: inherit;
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+#navbar li:nth-child(2n) {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}

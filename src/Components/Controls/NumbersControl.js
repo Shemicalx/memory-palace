@@ -11,7 +11,19 @@ const NumbersControl = (props) => {
         }
         if(onlyNumbers(change)) {
             props.setNumbers(()=>change);
-            props.setSubdivisions(()=> change.split('').join('f').split(''))
+            props.setSubdivisions(()=> {
+                return change
+                    .split('')
+                    .join(' ')
+                    .split('')
+                    .map((v,i) => v === ' ' ? false : v)
+            })
+            props.setWords(()=>{
+                return [change.replace(/([0-9])/g, (v)=> props.legend[v])]
+            })
+            // props.setWordsWithVowels(()=>{
+            //     return [change.replace(/([0-9])/g, (v)=> props.legend[v])]
+            // })
             return;
         }
         console.log('Not all are numbers!');

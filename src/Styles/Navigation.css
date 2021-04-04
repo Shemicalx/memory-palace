@@ -1,4 +1,7 @@
 #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #555;
     width: 15%;
     min-width: 200px;
@@ -29,4 +32,31 @@
 #navbar li:nth-child(2n) {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+}
+
+#legendControl {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#legendControl > label {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.4rem;
+    padding: 0.4rem 0;
+}
+
+#legendControl > label:nth-child(2n) {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#legendControl > label > input {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 50%;
+    border: none;
+    outline: none;
+    background-color: antiquewhite;
 }

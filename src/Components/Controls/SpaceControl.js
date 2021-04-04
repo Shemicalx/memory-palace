@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { InputsContext } from '../../Contexts/InputsContext';
 
 const SpaceControl = (props) => {
 
-    const {subdivisions, setSubdivisions, setWords, legend} = props;
+    const {subdivisions, setSubdivisions, setWords, legend} = useContext(InputsContext);
     const display = subdivisions.map((item, index) => {
         if(index % 2) {
             return (

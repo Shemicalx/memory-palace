@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { InputsContext } from '../../Contexts/InputsContext'
+import { LegendContext } from '../../Contexts/LegendContext'
 import '../../Styles/Pages.css'
 import NumbersControl from '../Controls/NumbersControl'
+import SentenceControl from '../Controls/SentenceControl'
 import SpaceControl from '../Controls/SpaceControl'
+import StoryControl from '../Controls/StoryControl'
 import WordControl from '../Controls/WordControl'
 
 const Numbers = (props) => {
@@ -26,56 +30,52 @@ const Numbers = (props) => {
     //characters and spaces convert to words in <WordsControl>
     //and modified with vowels
     const [ words, setWords ] = useState([]);
-    const [ wordsWithVowels, setWordsWithVowels ] = useState([]); 
-    const [ legend, setLegend ] = useState({
-        0: 's',
-        1: 'l',
-        2: 'b',
-        3: 'g',
-        4: 'd',
-        5: 'c',
-        6: 'n',
-        7: 'r',
-        8: 'm',
-        9: 'p',
-    });
+    //words with vowels are stored seperately in a different state.
+    // they are being used in the final step to complete the story.
+    const [ wordsWithVowels, setWordsWithVowels ] = useState([]);
+    //The story is the final result from mixing wordsWithVowels and 
+    //the input values from their sides 
+    const [ story, setStory ] = useState([]);
+
+    const { legend } = useContext(LegendContext);
     
+    const providerValue = useMemo(()=> ({
+        legend,
+        numbers, 
+        setNumbers, 
+        subdivisions,
+        setSubdivisions,
+        words, 
+        setWords,
+        wordsWithVowels,
+        setWordsWithVowels, 
+        story,
+        setStory,
+    }), [legend, numbers, subdivisions, words, wordsWithVowels, story])
+
+    //initiate a words with vowels array when words are being picked
     useEffect(() => {
         console.log('Words have changed!');
         setWordsWithVowels(()=>Array(words.length).fill(''))
     },[words])
     
+    //initiate a story array which is assembled out of every word with vowels
+    //surrounded by two empty values in which the inputs changes will go.
+    useEffect(() => {
+        console.log('WordsWithVowels have changed!');
+        setStory(()=> wordsWithVowels.map( word => ['', word, '']))
+    },[wordsWithVowels])
+    
     return (
         <section>
             <div className="Inputs">
-                <NumbersControl 
-                    numbers={numbers} 
-                    legend={legend}
-                    setNumbers={setNumbers}
-                    setSubdivisions={setSubdivisions}
-                    setWordsWithVowels={setWordsWithVowels}
-                    setWords={setWords}
-                />
-                <SpaceControl 
-                    subdivisions={subdivisions} 
-                    setSubdivisions={setSubdivisions} 
-                    setWords={setWords}
-                    legend={legend} 
-                    />
-                <WordControl 
-                    legend={legend} 
-                    words={words}
-                    setWords={setWords}
-                    wordsWithVowels={wordsWithVowels}
-                    setWordsWithVowels={setWordsWithVowels}
-                />
-                <WordControl 
-                    legend={legend} 
-                    words={words}
-                    setWords={setWords}
-                    wordsWithVowels={wordsWithVowels}
-                    setWordsWithVowels={setWordsWithVowels}
-                />
+                <InputsContext.Provider value={providerValue}>
+                    <NumbersControl />
+                    <SpaceControl />
+                    <WordControl />
+                    <SentenceControl />
+                    <StoryControl />
+                </InputsContext.Provider>
             </div>
         </section>
     )

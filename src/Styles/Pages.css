@@ -1,4 +1,5 @@
 section {
+    display: flex;
     width: 100%;
     height: 100%;
 }
@@ -8,29 +9,22 @@ section {
     flex-direction: column;
     width: inherit;
     height: inherit;
-    font-size: 5rem;
+    font-size: 2rem;
     text-align: center;
 }
 
-.Inputs > * {
-    width: inherit;
-    height: 100%;
+.Inputs * {
     outline: none;
     border: none;
 }
 
-.Inputs > *:nth-child(2n) {
-    border-top: 1px solid #555;
-    border-bottom: 1px solid #555;
-}
-
-.Inputs > input {
+.Inputs > div > input {
     text-align: center;
     font-size: 5rem;
     letter-spacing: 2rem;
 }
 
-.Inputs > div {
+.Inputs > div > div {
     display: flex;
     font-size: 4rem;
     justify-content: center;
@@ -39,20 +33,81 @@ section {
     color: black;
 }
 
-#spaceControl > button {
+.controlWrapper { 
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    width: inherit;
     height: inherit;
-    width: 50%;
+}
+
+.controlWrapper h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#spaceControl {
+    justify-content: center;
+    padding: 0 30%;
+}
+
+#spaceControl > button {
+    position: relative;
+    height: 80%;
+    width: 10%;
     border: none;
     outline: none;
-    transition: background-color 0.3s;
+    transition: 
+        background-color 0.3s,
+        width 0.3s;
+}
+
+#spaceControl > button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 3rem;
+    width: 1rem;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    transition: all 0.4s;
+}
+
+#spaceControl > button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2rem;
+    width: 2rem;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #333;
+    transition: box-shadow 0.4s, height 0.4s, width 0.4s, background-color 0.1s;
 }
 
 #spaceControl > button:hover {
-    background-color: #ADD;
+    /* background-color: #ADD; */
 }
 
 #spaceControl > button.clicked {
-    background-color: #555;
+    width: 100%;
+}
+
+#spaceControl > button.clicked::before {
+    height: 4rem;
+    width: 4rem;
+    background-color: white;
+    box-shadow: 
+        0 0 0 0.2rem #333, 
+        0 0 0 0.3rem #777,
+        0 0 0 0.4rem #999;
+}
+
+#spaceControl > button.clicked::after {
+    height: 8rem;
+    width: 4rem;
 }
 
 #spaceControl .display {
@@ -79,7 +134,6 @@ section {
     margin: 0 0.1rem;
     outline: none;
     border: 1px solid #555;
-    border-bottom: none;
 }
 
 #sentenceControl {
@@ -98,11 +152,22 @@ section {
 
 #sentenceControl .display > input {
     font-size: 1.6rem;
-    width: 100%;
+    width: 80%;
     outline: none;
     border: none;
     text-align: center;
     border-bottom: 1px solid #555;
+}
+
+#storyControl {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 3rem;
+}
+
+#storyControl .emphasisedWord {
+    font-size: 3.2rem;
+    color: blue;
 }
 
 .arrow {

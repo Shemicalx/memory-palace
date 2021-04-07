@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { InputsContext } from '../../Contexts/InputsContext';
+import ControlWrapper from './ControlWrapper';
 
 const SpaceControl = (props) => {
 
@@ -39,9 +40,12 @@ const SpaceControl = (props) => {
     });
 
     return (
-        <div id="spaceControl">
-            {display}
-        </div>
+        <ControlWrapper controlName="space">
+            <div id="spaceControl">
+                {display}
+            </div>
+            <h3>Click the arrows to group sets of characters</h3>
+        </ControlWrapper>
     )
 }
 

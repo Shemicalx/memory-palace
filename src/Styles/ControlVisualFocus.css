@@ -1,0 +1,32 @@
+.controlVisualFocus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20vh;
+    width: calc(100% - 250px);
+    border-top: 10px solid #333;
+    border-bottom: 10px solid #333;
+    /* opacity: 0.2; */
+    pointer-events: none;
+    transition: all 0.4s;
+}
+
+.controlVisualFocus::after {
+    content: '';
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 1px;
+    width: 1px;
+    border-left: 2rem solid #333;
+    border-top: 2rem solid transparent;
+    border-bottom: 2rem solid transparent;
+    animation: arrowPulse 2s linear alternate infinite;
+}
+
+@keyframes arrowPulse {
+    50% {
+        left: 3.2rem;
+    }
+}

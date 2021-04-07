@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { InputsContext } from '../../Contexts/InputsContext';
+import ControlWrapper from './ControlWrapper';
 
 const NumbersControl = (props) => {
 
@@ -30,13 +31,17 @@ const NumbersControl = (props) => {
     }
 
     return (
-        <input 
-            type="text" 
-            name="numbers"
-            onChange={handleNumbersChange}
-            autoComplete="off"
-            value={numbers}
-        />
+        <ControlWrapper controlName="numbers">
+            <input 
+                type="text" 
+                name="numbers"
+                onChange={handleNumbersChange}
+                autoComplete="off"
+                placeholder="Enter a Number"
+                value={numbers}
+            />
+            <h3>Type the numbers you'd like to memorize</h3>
+        </ControlWrapper>
     )
 }
 

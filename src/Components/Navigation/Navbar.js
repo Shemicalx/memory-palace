@@ -6,6 +6,7 @@ const Navbar = (props) => {
 
     return (
         <nav id="navbar">
+            <h1>Memory Palace</h1>
             <ul>
                 {props.children.map(link => {
                     return (

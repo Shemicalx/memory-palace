@@ -24,7 +24,9 @@ const ControlVisualFocus = (props) => {
 
     return (
         <span className="controlVisualFocus" style={position()}>
+            <span className="guidingArrow" />
             {children}
+            <span className="sideBarMask" />
         </span>
     )
 }

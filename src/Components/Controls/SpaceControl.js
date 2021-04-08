@@ -32,8 +32,8 @@ const SpaceControl = (props) => {
         };
         return (
             <div className="display" key={index}>
-                <span>{item}</span>
-                <span className="arrow" />
+                {/* <span>{item}</span>
+                <span className="arrow" /> */}
                 <span>{legend[item]}</span>
             </div>
         )
@@ -44,7 +44,7 @@ const SpaceControl = (props) => {
             <div id="spaceControl">
                 {display}
             </div>
-            <h3>Click the arrows to group sets of characters</h3>
+            <h3>Click the colored buttons to group sets of characters</h3>
         </ControlWrapper>
     )
 }

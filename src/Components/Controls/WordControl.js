@@ -11,13 +11,14 @@ const WordControl = (props) => {
         const newValue = e.target.value;
         console.log(newValue);
         const allowedCharacters = words[i].split('');
-        const vowels = '[aeiouy]*';
+        const vowels = '[aeiouywh]*';
         //Horrifying RegExp for -
         //empty string |
         //vowels at start | 
         //original characters in order with possible vowels in between
         const condition = new RegExp('^$|^' + vowels + '$|^(' + vowels + allowedCharacters.join(vowels + '(') + vowels + ')?'.repeat(allowedCharacters.length) + '$', 'gi');
         if(condition.test(newValue)){
+            console.log(condition);
             let newWords = [...wordsWithVowels];
             newWords[i] =  newValue;
             setWordsWithVowels(newWords);
@@ -33,7 +34,7 @@ const WordControl = (props) => {
                     return (
                         <div className="display" key={index}>
                             <span>{word}</span>
-                            <span className="arrow"></span>
+                            {/* <span className="arrow"></span> */}
                             <input 
                                 type="text" 
                                 value={wordsWithVowels[index]}

@@ -2,31 +2,40 @@
     position: absolute;
     top: 0;
     right: 0;
-    height: 20vh;
+    height: 18vh;
     width: calc(100% - 250px);
-    border-top: 10px solid #333;
-    border-bottom: 10px solid #333;
+    border-top: 1vh solid var(--emphasis-color);
+    border-bottom: 1vh solid var(--emphasis-color);
     /* opacity: 0.2; */
     pointer-events: none;
     transition: all 0.4s;
 }
 
-.controlVisualFocus::after {
-    content: '';
+.guidingArrow {
     position: absolute;
-    left: 3rem;
+    background-color: transparent;
     top: 50%;
-    transform: translate(0, -50%);
+    left: 2rem;
     height: 1px;
     width: 1px;
-    border-left: 2rem solid #333;
-    border-top: 2rem solid transparent;
-    border-bottom: 2rem solid transparent;
+    border-left: 1rem solid #3aa;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
     animation: arrowPulse 2s linear alternate infinite;
+    transform: translate(0, -50%);
+}
+
+.sideBarMask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 19vh;
+    width: 250px;
+    background-color: var(--emphasis-color);
 }
 
 @keyframes arrowPulse {
     50% {
-        left: 3.2rem;
+        left: 1.6rem;
     }
 }

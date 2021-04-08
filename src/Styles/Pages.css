@@ -2,6 +2,7 @@ section {
     display: flex;
     width: 100%;
     height: 100%;
+    background-color: var(--main-dark-color);
 }
 
 .Inputs {
@@ -18,6 +19,11 @@ section {
     border: none;
 }
 
+.Inputs input {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+}
+
 .Inputs > div > input {
     text-align: center;
     font-size: 5rem;
@@ -29,8 +35,9 @@ section {
     font-size: 4rem;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    color: black;
+    background-color: var(--main-color);
+    padding: 1rem;
+    color: var(--secondary-color);
 }
 
 .controlWrapper { 
@@ -45,19 +52,23 @@ section {
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    padding: 0 2rem;
+    color: var(--main-dark-color);
+    z-index: 3;
 }
 
 #spaceControl {
     justify-content: center;
-    padding: 0 30%;
+    padding: 0 10%;
 }
 
 #spaceControl > button {
     position: relative;
     height: 80%;
-    width: 10%;
+    width: 60%;
     border: none;
     outline: none;
+    background-color: transparent;
     transition: 
         background-color 0.3s,
         width 0.3s;
@@ -68,11 +79,12 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 3rem;
-    width: 1rem;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    transition: all 0.4s;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: var(--emphasis-color);
+    transition: all 0.3s;
 }
 
 #spaceControl > button::before {
@@ -80,15 +92,19 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 2rem;
-    width: 2rem;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background-color: #333;
-    transition: box-shadow 0.4s, height 0.4s, width 0.4s, background-color 0.1s;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: all 0.2s;
 }
 
-#spaceControl > button:hover {
-    /* background-color: #ADD; */
+#spaceControl > button:hover::after {
+    background-color: var(--emphasis-light-color);
+    height: 2.2rem;
+    width: 2.2rem;
 }
 
 #spaceControl > button.clicked {
@@ -97,17 +113,22 @@ section {
 
 #spaceControl > button.clicked::before {
     height: 4rem;
-    width: 4rem;
-    background-color: white;
-    box-shadow: 
-        0 0 0 0.2rem #333, 
-        0 0 0 0.3rem #777,
-        0 0 0 0.4rem #999;
+    width: 2rem;
+    background-color: var(--main-color);
+    border-radius: 0%;
+    box-shadow: 1.1rem 0 0 -0.9rem var(--emphasis-light-color), -1.1rem 0 0 -0.9rem var(--emphasis-light-color);
+}
+
+#spaceControl > button.clicked:hover::before {
+    width: 1.8rem;
 }
 
 #spaceControl > button.clicked::after {
-    height: 8rem;
-    width: 4rem;
+    height: 3rem;
+    width: 3rem;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 #spaceControl .display {
@@ -129,11 +150,12 @@ section {
 }
 
 #wordControl .display > input {
-    font-size: 3rem;
+    font-size: 2rem;
     width: 80%;
     margin: 0 0.1rem;
+    padding: 0.4rem;
     outline: none;
-    border: 1px solid #555;
+    border: 1px solid var(--secondary-color);
 }
 
 #sentenceControl {
@@ -156,7 +178,7 @@ section {
     outline: none;
     border: none;
     text-align: center;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 #storyControl {
@@ -167,7 +189,7 @@ section {
 
 #storyControl .emphasisedWord {
     font-size: 3.2rem;
-    color: blue;
+    color: #3aa;
 }
 
 .arrow {
@@ -175,8 +197,8 @@ section {
     display: block;
     height: var(--arrow-size);
     width: var(--arrow-size);
-    border-bottom: 0.2rem solid #555;
-    border-right: 0.2rem solid #555;
+    border-bottom: 0.2rem solid var(--secondary-color);
+    border-right: 0.2rem solid var(--secondary-color);
     /* background-color: red; */    
     transform: rotate(45deg) translate(-25%, -25%);
 }

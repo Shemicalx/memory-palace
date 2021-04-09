@@ -5,6 +5,9 @@ import Home from './Components/Pages/Home.js'
 import Numbers from './Components/Pages/Numbers.js';
 import './App.css';
 import { LegendContext } from './Contexts/LegendContext.js';
+import MemoryPalace from './Components/Pages/MemoryPalace.js';
+import Information from './Components/Pages/Information.js';
+import Saved from './Components/Pages/Saved.js';
 
 function App() {
   
@@ -27,12 +30,24 @@ function App() {
         <LegendContext.Provider value={{legend, setLegend}}>
           <Navbar>
             <Link to='/'>Home</Link>
+            <Link to='/palace'>Memory Palace</Link>
             <Link to='/numbers'>Numbers</Link>
+            <Link to='/information'>Information</Link>
+            <Link to='/saved'>Saved Stories</Link>
           </Navbar>
 
           <Switch>
             <Route path='/numbers'>
               <Numbers />
+            </Route>
+            <Route path='/palace'>
+              <MemoryPalace />
+            </Route>
+            <Route path='/information'>
+              <Information />
+            </Route>
+            <Route path='/saved'>
+              <Saved />
             </Route>
             <Route path='/'>
               <Home />

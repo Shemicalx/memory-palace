@@ -30,3 +30,25 @@ body {
   height: 100%;
   width: 100%;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+}
+
+h2 {
+  font-size: 3rem;
+  margin-top: 3rem;
+  max-width: 768px;
+}
+
+p {
+  font-size: 2rem;
+  margin-top: 2rem;
+  max-width: 768px;
+}

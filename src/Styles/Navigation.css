@@ -21,9 +21,15 @@
 #navbar li {
     height: 4rem;
     width: auto;
+    border-left: 0rem solid var(--emphasis-color);
+    transition: border 0.4s;
 }
 
-#navbar a {
+#navbar li.active {
+    border-left: 0.6rem solid var(--emphasis-color);
+}
+
+#navbar li > a {
     display: inline-block;
     display: flex;
     justify-content: flex-start;
@@ -34,6 +40,11 @@
     color: var(--secondary-color);
     text-decoration: none;
     font-size: 2rem;
+    transition: color 0.4s;
+}
+
+#navbar li.active > a {
+    color: var(--emphasis-color);
 }
 
 #navbar li:nth-child(2n) {
@@ -52,11 +63,13 @@
     justify-content: space-evenly;
     font-size: 1.6rem;
     padding: 0.4rem 0;
+    background-color: var(--emphasis-color);
+    color: var(--main-color);
 }
 
 #legendControl > label:nth-child(2n) {
-    border-top: 1px solid var(--secondary-color);
-    border-bottom: 1px solid var(--secondary-color);
+    border-top: 1px solid var(--main-color);
+    border-bottom: 1px solid var(--main-color);
 }
 
 #legendControl > label > input {
@@ -65,5 +78,6 @@
     width: 50%;
     border: none;
     outline: none;
-    background-color: #ddd;
+    background-color: var(--emphasis-dark-color);
+    color: var(--main-color);
 }

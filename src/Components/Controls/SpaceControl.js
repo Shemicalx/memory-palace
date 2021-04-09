@@ -32,8 +32,8 @@ const SpaceControl = (props) => {
         };
         return (
             <div className="display" key={index}>
-                {/* <span>{item}</span>
-                <span className="arrow" /> */}
+                <span>{item}</span>
+                <span className="arrow" />
                 <span>{legend[item]}</span>
             </div>
         )
